@@ -1,4 +1,7 @@
 window.onload = function () {
+    const btn = document.querySelector(".searchBtn");
+    const input = document.querySelector(".cityInp");
+    btn.addEventListener("click", function() {
     fetch("https://api.openaq.org/v1/measurements")
         .then(resp => {
             if (resp.ok) {
@@ -9,7 +12,7 @@ window.onload = function () {
         })
         .then(resp => {
             resp.results.forEach(result => {
-                $('body').html($('<div>', {
+                $('.container').html($('<div>', {
                     class: 'card weather-card'
                 }));
                 $('<div/>', {
@@ -33,4 +36,5 @@ window.onload = function () {
                 console.log("Chyba zabladziles? Nie ma takiej strony")
             }
         })
+})
 }
